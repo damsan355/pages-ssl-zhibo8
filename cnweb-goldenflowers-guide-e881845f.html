@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>炸金花 · 再访与收藏</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f5f3f0;
+            color: #1f2c3a;
+            line-height: 1.6;
+        }
+
+        /* 深色头图 */
+        .hero {
+            background: linear-gradient(135deg, #0e1a2b 0%, #1d2f44 100%);
+            padding: 5rem 2rem 4rem;
+            text-align: center;
+            color: #eae6df;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            top: -20%;
+            left: -10%;
+            width: 120%;
+            height: 140%;
+            background: radial-gradient(circle at 30% 70%, rgba(212, 175, 55, 0.08), transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero .sub {
+            font-size: 1.1rem;
+            opacity: 0.7;
+            font-weight: 300;
+            max-width: 600px;
+            margin: 1rem auto 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero .badge {
+            display: inline-block;
+            margin-top: 1.8rem;
+            padding: 0.4rem 1.4rem;
+            border: 1px solid rgba(212, 175, 55, 0.5);
+            border-radius: 30px;
+            font-size: 0.85rem;
+            color: #d4af37;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 1;
+            background: rgba(212, 175, 55, 0.06);
+        }
+
+        /* 内容卡片区 */
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 4rem;
+        }
+
+        .intro-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2rem 1.8rem;
+            flex: 1 1 280px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.07);
+            transform: translateY(-3px);
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: #16212e;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card h3 span {
+            font-size: 1.1rem;
+            opacity: 0.6;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #2f3e4f;
+            margin-bottom: 0.6rem;
+        }
+
+        .card .tag {
+            display: inline-block;
+            background: #eae7e2;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            color: #3b4b5e;
+            margin-right: 0.4rem;
+            margin-top: 0.3rem;
+            letter-spacing: 0.3px;
+        }
+
+        .emphasis {
+            color: #b8860b;
+            font-weight: 500;
+        }
+
+        .link-sentence {
+            background: #ffffff;
+            padding: 2rem 2.2rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+            margin: 2rem 0 2.5rem;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            border-left: 4px solid #d4af37;
+        }
+
+        .link-sentence a {
+            color: #b8860b;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(184, 134, 11, 0.25);
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .link-sentence a:hover {
+            border-bottom-color: #b8860b;
+            color: #8b6914;
+        }
+
+        .faq-summary {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .faq-item {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 1.2rem 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        }
+
+        .faq-item h4 {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+            color: #16212e;
+        }
+
+        .faq-item p {
+            font-size: 0.9rem;
+            color: #4b5a6b;
+        }
+
+        .tagline {
+            text-align: center;
+            margin-top: 3rem;
+            font-size: 0.9rem;
+            color: #6a7a8b;
+            border-top: 1px solid #e2dbd3;
+            padding-top: 2rem;
+        }
+
+        .tagline span {
+            color: #b8860b;
+            font-weight: 500;
+        }
+
+        @media (max-width: 700px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero {
+                padding: 3.5rem 1.2rem 3rem;
+            }
+            .faq-summary {
+                grid-template-columns: 1fr;
+            }
+            .intro-cards {
+                gap: 1.2rem;
+            }
+            .card {
+                padding: 1.5rem 1.2rem;
+            }
+            .link-sentence {
+                padding: 1.5rem 1.2rem;
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            .container {
+                padding: 2rem 1rem 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <h1>炸金花 · 再访收藏夹</h1>
+        <p class="sub">不止是牌型比较，更是一种持续关注的节奏。<br>保存页面，常回来翻看。</p>
+        <div class="badge">✦ 以信息卡片承载熟悉与新知</div>
+    </header>
+
+    <main class="container">
+
+        <!-- 信息卡片区域 -->
+        <div class="intro-cards">
+            <div class="card">
+                <h3><span>🃏</span> 主视觉 · 牌型逻辑</h3>
+                <p>从豹子到散牌，每种组合都对应着不同的概率与心理博弈。清晰展示牌型规则、大小顺序与常见术语，帮助快速回顾核心机制。</p>
+                <div>
+                    <span class="tag">豹子</span>
+                    <span class="tag">同花顺</span>
+                    <span class="tag">金花</span>
+                    <span class="tag">顺子</span>
+                </div>
+            </div>
+            <div class="card">
+                <h3><span>📌</span> 用途卡片 · 策略参考</h3>
+                <p>适合在休闲对局前快速翻阅：看牌、闷牌、加注的决策节点拆解，以及不同位置玩家的行动倾向。不提供必胜法，只梳理常见思路。</p>
+                <div>
+                    <span class="tag">看牌策略</span>
+                    <span class="tag">加注节奏</span>
+                    <span class="tag">弃牌信号</span>
+                </div>
+            </div>
+            <div class="card">
+                <h3><span>👥</span> 适合人群</h3>
+                <p>初次接触规则的新手、想回顾细节的回归玩家，以及希望从牌理角度理解对局逻辑的爱好者。无论经验多少，总能找到有用片段。</p>
+                <div>
+                    <span class="tag">新手</span>
+                    <span class="tag">回归玩家</span>
+                    <span class="tag">牌理爱好者</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 自然链接段落 -->
+        <div class="link-sentence">
+            <p>如果你正在寻找规则清晰、排版舒服的参考页，不妨将 <a href="https://cnweb-goldenflowers.com">炸金花</a> 加入浏览器的收藏夹或书签栏。页面内容围绕牌型、术语与常见场景展开，适合在休闲时随手翻阅。再次访问时不需要重新搜索，打开收藏即可快速进入状态。</p>
+        </div>
+
+        <!-- FAQ 摘要 + 持续关注 -->
+        <h3 style="font-weight: 400; font-size: 1.2rem; margin-bottom: 1rem; color: #16212e;">❓ 一些你可能留意过的疑问</h3>
+        <div class="faq-summary">
+            <div class="faq-item">
+                <h4>牌型相同时怎么比大小？</h4>
+                <p>豹子按点数比较，同花顺从最大牌开始比，金花同样先看最大牌。若完全相同则比较次大牌，以此类推。具体规则页面内有详细对照。</p>
+            </div>
+            <div class="faq-item">
+                <h4>「235」能赢豹子？</h4>
+                <p>在部分规则中，花色不同的 2、3、5 被视为特殊组合，可以压过豹子。但这不是通用规则，多数对局中 235 仍为最小散牌。需要提前约定。</p>
+            </div>
+            <div class="faq-item">
+                <h4>闷牌和看牌有什么区别？</h4>
+                <p>闷牌指不看牌直接下注，通常注额较低；看牌后下注额会翻倍。闷牌可以隐藏信息，但也增加不确定性。策略上各有优劣。</p>
+            </div>
+            <div class="faq-item">
+                <h4>页面内容会更新吗？</h4>
+                <p>信息将根据常见问题与玩家反馈逐步补充，主要围绕规则解释、术语说明与实用参考。不定期优化排版与细节。</p>
+            </div>
+        </div>
+
+        <div class="tagline">
+            <span>✦</span> 常回收藏夹，多看一次，多一分熟悉 <span>✦</span>
+        </div>
+
+    </main>
+
+</body>
+</html>
